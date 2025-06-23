@@ -36,6 +36,13 @@ test.describe('API Tests for JSONPlaceholder', { tag: '@api' }, () => {
         expect(comments.every(comment => comment.postId === 1)).toBe(true);
     });
 
+    test('Fetch comments for post id=xyz returns empty set', async ({ request }) => {
+        const response = await context.get(`comments?postId=xyz`);
+        expect(response.ok()).toBeTruthy()
+        const comments = await response.json();
+        expect(comments.length).toBe(0);
+    });
+
     test('Fetch post id=1 all comments', async ({ request }) => {
         const response = await context.get(`posts/1/comments`);
         expect(response.ok()).toBeTruthy()
