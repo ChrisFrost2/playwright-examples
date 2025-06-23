@@ -25,7 +25,7 @@ test.describe('Login tests', () => {
         { user: 'standard_user', password: '', message: 'Password is required' },
         { user: '', password: 'wrong_password', message: 'Username is required' }
     ].forEach(({ user, password, message }) => {
-        test(`Login as  '${user}' with password '${password}'`, {
+        test(`Failed login - login as  '${user}' with password '${password}' presents error message`, {
             tag: '@smokeTest',
             annotation: [{
                 type: 'issue',
